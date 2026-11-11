@@ -1,4 +1,4 @@
-# Examen final — Robótica Móvil: Robot Mecanum con LiDAR y planeación A*
+# Examen final Robótica Móvil: Robot Mecanum con LiDAR y planeación A*
 
 | | |
 |---|---|
