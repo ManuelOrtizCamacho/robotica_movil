@@ -2,24 +2,6 @@
 
 NO MODIFICAR (viene resuelto en el examen). Lo usa simulacion.launch.py.
 
-¿Por qué existe esto?
-    Una rueda Mecanum real tiene rodillos libres a 45°. En Gazebo se emula con
-    fricción anisotrópica en la colisión de cada rueda:
-        mu  = 1  en la dirección fdir1 (la rueda "agarra")
-        mu2 = 0  en la dirección perpendicular (el rodillo gira libre)
-    fdir1 debe estar expresada en base_link (si se expresa en el link de la
-    rueda, gira con ella y deja de apuntar a 45°). Eso se escribe en SDF como
-        <fdir1 gz:expressed_in="base_link">1 -1 0</fdir1>
-    pero el atributo gz:expressed_in se pierde cuando Gazebo convierte un URDF
-    (por ejemplo con `create -topic robot_description`). Por eso el launch convierte el URDF a SDF con `gz sdf -p` e inserta aquí
-    la fricción de cada rueda antes de hacer el spawn.
-
-Direcciones (rodillos en configuración "X" vista desde arriba), coherentes con
-ω = W⁺ ξ, ξ = [u, v, r]ᵀ, a = radio de rueda:
-    ω_del_izq = (u - v - (lx+ly) r) / a      fdir1 = ( 1, -1, 0)
-    ω_del_der = (u + v + (lx+ly) r) / a      fdir1 = ( 1,  1, 0)
-    ω_tra_izq = (u + v - (lx+ly) r) / a      fdir1 = ( 1,  1, 0)
-    ω_tra_der = (u - v + (lx+ly) r) / a      fdir1 = ( 1, -1, 0)
 """
 
 import re
