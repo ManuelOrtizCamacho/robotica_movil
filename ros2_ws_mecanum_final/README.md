@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Duración | **40 minutos** |
+| Duración | **50 minutos** |
 | Valor | **2.0 Pts** |
 | Herramientas | ROS 2 Jazzy + Gazebo Harmonic, Python |
 
