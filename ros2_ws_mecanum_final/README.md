@@ -58,7 +58,8 @@ La grilla del mundo (`mapa.py`) ya viene construida: celdas de 0.1 m, obstáculo
 ```bash
 # Terminal 1
 ros2 launch mi_robot_mecanum simulacion.launch.py carne:=<su_carne>
-# Terminal 2
+# Terminal 2 (ejecútelo dentro de ~/ros2_ws_mecanum_final para que el CSV quede ahí)
+cd ~/ros2_ws_mecanum_final && source install/setup.bash
 ros2 run mi_mecanum_control navegar_astar --ros-args -p carne:=<su_carne> -p use_sim_time:=true
 ```
 
@@ -66,8 +67,18 @@ El robot debe llegar a la meta **sin chocar**. En RViz deben verse el robot, el 
 
 ## Entrega (~3 min)
 
-1. Haga commit y push de su workspace a su repositorio de GitHub, incluyendo `resultado_<carne>.csv` y una captura `captura_<carne>.png` con Gazebo y RViz donde se vea el robot en la meta y la terminal con el mensaje **META ALCANZADA**. No suba `build/`, `install/` ni `log/`.
-2. Suba a Moodle el archivo `GXX_EX_RM_NNAA.txt` con el enlace al repositorio. El commit final debe ser anterior al cierre del examen.
+Suba a Moodle **un solo archivo** `RM_NNAA.zip` (NN = nombre, AA = apellido) con:
+
+1. Su workspace `ros2_ws_mecanum_final` **sin** las carpetas `build/`, `install/` ni `log/`.
+2. El archivo `resultado_<carne>.csv` que genera el nodo `navegar_astar`.
+3. Una captura `captura_<carne>.png` de pantalla completa donde se vean Gazebo y RViz con el robot en la meta, la terminal con el mensaje **META ALCANZADA** y la sesión activa de Moodle con el examen y su usuario.
+
+Ponga el CSV y la captura dentro de `~/ros2_ws_mecanum_final` y comprima así:
+
+```bash
+cd ~
+zip -r RM_NNAA.zip ros2_ws_mecanum_final -x "*/build/*" "*/install/*" "*/log/*"
+```
 
 ## Rúbrica
 
