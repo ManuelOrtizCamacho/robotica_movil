@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Duración | **40 minutos** |
-| Valor | **2.5 Pts** |
+| Valor | **2.0 Pts** |
 | Herramientas | ROS 2 Jazzy + Gazebo Harmonic, Python |
 
 El robot Mecanum del examen anterior **está incompleto**: le falta la **rueda trasera derecha** y el **RPLIDAR A3**. Debe completarlo, programar su cinemática (**Q, W, J**) y terminar el planificador **A\*** para que el robot llegue a la meta que le asigna su carné, esquivando los obstáculos de la pista.
@@ -28,7 +28,7 @@ Todos los valores salen de los **últimos 4 dígitos de su carné**. Cada estudi
 
 Dimensiones, masa, muestras por segundo y rango de cada modo deben salir de la hoja de datos.
 
-## Parte 1 — Robot (0.6 Pts, ~10 min) · `mi_robot_mecanum/urdf/mi_robot.urdf.xacro`
+## Parte 1 — Robot (0.5 Pts, ~10 min) · `mi_robot_mecanum/urdf/mi_robot.urdf.xacro`
 
 1. **(R-1)** Instanciar la rueda trasera derecha `tra_der` con la macro `rueda` (posición con lx = wheelbase/2, ly = track/2 y los signos correctos) y agregar su **motor** con la macro `motor`.
 2. **(R-2)** Agregar el **RPLIDAR A3**: link `lidar_link` (cilindro con dimensiones, masa e inercia reales), joint fijo `joint_lidar` en la posición (x, 0, z) de su carné, y el sensor `gpu_lidar` en `/scan` con `gz_frame_id` = `lidar_link`, `update_rate` = barrido, `samples` = muestras por segundo ÷ barrido, ángulo de −π a π, rango del modo y ruido gaussiano σ = 0.01 m.
@@ -43,7 +43,7 @@ Con ξ = [u, v, r]ᵀ, ω = [ω_di, ω_dd, ω_ti, ω_td]ᵀ, a = radio de rueda 
 
 `probar_offline` debe mostrar **W·Q = I ? SÍ**.
 
-## Parte 3 — Planeación A\* (0.8 Pts, ~12 min) · `mi_mecanum_control/astar.py`
+## Parte 3 — Planeación A\* (0.5 Pts, ~12 min) · `mi_mecanum_control/astar.py`
 
 La grilla del mundo (`mapa.py`) ya viene construida: celdas de 0.1 m, obstáculos inflados con el radio del robot y 8 vecinos (costo 1 recto, √2 en diagonal). Complete:
 
@@ -53,7 +53,7 @@ La grilla del mundo (`mapa.py`) ya viene construida: celdas de 0.1 m, obstáculo
 
 `probar_offline` debe mostrar el **costo de A\*** y llegar a la meta en la simulación ideal.
 
-## Parte 4 — Ejecución en Gazebo (0.4 Pts, ~5 min)
+## Parte 4 — Ejecución en Gazebo (0.6 Pts, ~5 min)
 
 ```bash
 # Terminal 1
@@ -84,7 +84,7 @@ zip -r RM_NNAA.zip ros2_ws_mecanum_final -x "*/build/*" "*/install/*" "*/log/*"
 
 | Criterio | Peso |
 |---|---|
-| Rueda `tra_der` con su motor y RPLIDAR A3 según hoja de datos y carné | 0.6 |
-| Q, W y J(φ) correctas (W·Q = I) | 0.7 |
-| A\*: heurística, costo g y reconstrucción del camino (costo óptimo) | 0.8 |
+| Rueda `tra_der` con su motor y RPLIDAR A3 según hoja de datos y carné | 0.5 |
+| Q, W y J(φ) correctas (W·Q = I) | 0.5 |
+| A\*: heurística, costo g y reconstrucción del camino (costo óptimo) | 0.6 |
 | Robot llega a la meta en Gazebo sin chocar (CSV y captura) | 0.4 |
