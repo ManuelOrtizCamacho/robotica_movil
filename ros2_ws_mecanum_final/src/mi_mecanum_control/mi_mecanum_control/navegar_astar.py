@@ -32,7 +32,7 @@ from mi_mecanum_control.control import ley_control
 class NavegarAStar(Node):
     def __init__(self):
         super().__init__('navegar_astar')
-        carne = self.declare_parameter('carne', '').value
+        carne = str(self.declare_parameter('carne', '', ParameterDescriptor(dynamic_typing=True)).value)
         self.D = datos(carne)
         self.get_logger().info('\n' + texto(self.D))
 
